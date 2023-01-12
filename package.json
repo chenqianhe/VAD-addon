@@ -1,0 +1,15 @@
+{
+  "name": "vad-addon",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx cmake-js compile"
+  },
+  "author": "Qanhe Chen",
+  "license": "ISC",
+  "decDependencies": {
+    "node-addon-api": "^5.0.0",
+    "cmake-js": "^7.1.1"
+  }
+}
