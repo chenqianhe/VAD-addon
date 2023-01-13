@@ -1,0 +1,3 @@
+/Users/chenqianhe/CLionProjects/vad-addon/build/CMakeFiles/vad_addon.dir
+/Users/chenqianhe/CLionProjects/vad-addon/build/CMakeFiles/edit_cache.dir
+/Users/chenqianhe/CLionProjects/vad-addon/build/CMakeFiles/rebuild_cache.dir
