@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 11)
 # env var supported by cmake-js
 add_definitions(-DNAPI_VERSION=4)
 include_directories(${CMAKE_JS_INC})
+# For Windows, only support "Release" mode now
+set(CMAKE_BUILD_TYPE "Release")
 #==================================================================
 
 # Include third_lib
