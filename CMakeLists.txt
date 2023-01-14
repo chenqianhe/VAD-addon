@@ -43,6 +43,11 @@ endif ()
 include(${FASTDEPLOY_INSTALL_DIR}/FastDeploy.cmake)
 # Add FastDeploy dependency header file
 include_directories(${FASTDEPLOY_INCS})
+if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Windows")
+    # For Windows, copy fastdeploy dll
+    message("* Copy: Using " ${CMAKE_HOST_SYSTEM_NAME} "; Copy fastdeploy dll")
+    install_fastdeploy_libraries(${CMAKE_CURRENT_BINARY_DIR}/Release)
+endif()
 #==================================================================
 
 # Explicitly add to enable code insight
@@ -65,4 +70,9 @@ target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB} ${FASTDEPLOY_LIBS})
 if(MSVC AND CMAKE_JS_NODELIB_DEF AND CMAKE_JS_NODELIB_TARGET)
     # Generate node.lib
     execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET} ${CMAKE_STATIC_LINKER_FLAGS})
+endif()
+
+if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Windows")
+    # For Windows, move .node and dll
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_BINARY_DIR}/Release ${PROJECT_SOURCE_DIR}/bin/${CMAKE_HOST_SYSTEM_NAME}/${CMAKE_HOST_SYSTEM_PROCESSOR})
 endif()
