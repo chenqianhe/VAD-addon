@@ -8,7 +8,7 @@
   },
   "author": "Qanhe Chen",
   "license": "ISC",
-  "decDependencies": {
+  "dependencies": {
     "node-addon-api": "^5.0.0",
     "cmake-js": "^7.1.1"
   }
