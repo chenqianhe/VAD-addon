@@ -52,7 +52,7 @@ endif()
 
 # Explicitly add to enable code insight
 add_library(${PROJECT_NAME} SHARED ${CMAKE_JS_SRC} src/main.cc src/wav.h src/vad.cc src/vad.h)
-set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node" LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/${CMAKE_HOST_SYSTEM_NAME}/${CMAKE_HOST_SYSTEM_PROCESSOR}")
+set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
 # Include N-API wrappers
 #==================================================================

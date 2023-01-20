@@ -4,3 +4,4 @@ cmake-build-*
 .idea
 /build/
 package-lock.json
+bin

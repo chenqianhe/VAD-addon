@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx cmake-js compile"
+    "build": "gulp"
   },
   "author": "Qanhe Chen",
   "license": "ISC",
   "dependencies": {
-    "node-addon-api": "^5.0.0",
-    "cmake-js": "^7.1.1"
+    "cmake-js": "^7.1.1",
+    "node-addon-api": "^5.0.0"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.2",
+    "gulp": "^4.0.2"
   }
 }
