@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22)
 project(vad_addon)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -43,8 +43,8 @@ endif ()
 include(${FASTDEPLOY_INSTALL_DIR}/FastDeploy.cmake)
 # Add FastDeploy dependency header file
 include_directories(${FASTDEPLOY_INCS})
-if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Windows")
-    # For Windows, copy fastdeploy dll
+if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
+    # For Linux, Windows, copy fastdeploy dll
     message("* Copy: Using " ${CMAKE_HOST_SYSTEM_NAME} "; Copy fastdeploy dll")
     install_fastdeploy_libraries(${CMAKE_CURRENT_BINARY_DIR}/Release)
 endif()
