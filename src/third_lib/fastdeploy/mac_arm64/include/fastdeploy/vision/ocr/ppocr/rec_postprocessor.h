@@ -32,20 +32,15 @@ class FASTDEPLOY_DECL RecognizerPostprocessor {
    */
   explicit RecognizerPostprocessor(const std::string& label_path);
 
-  /** \brief Process the result of runtime and fill to RecognizerResult
+  /** \brief Process the result of runtime and fill to ClassifyResult structure
    *
    * \param[in] tensors The inference result from runtime
-   * \param[in] texts The output text results of recognizer
-   * \param[in] rec_scores The output score results of recognizer
+   * \param[in] texts The output result of recognizer
+   * \param[in] rec_scores The output result of recognizer
    * \return true if the postprocess successed, otherwise false
    */
   bool Run(const std::vector<FDTensor>& tensors,
            std::vector<std::string>* texts, std::vector<float>* rec_scores);
-
-  bool Run(const std::vector<FDTensor>& tensors,
-           std::vector<std::string>* texts, std::vector<float>* rec_scores,
-           size_t start_index, size_t total_size,
-           const std::vector<int>& indices);
 
  private:
   bool SingleBatchPostprocessor(const float* out_data,

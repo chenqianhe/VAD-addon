@@ -14,10 +14,8 @@
 #pragma once
 
 #include <vector>
-
 #include "fastdeploy/runtime.h"
 #include "fastdeploy/fastdeploy_model.h"
-#include "fastdeploy/vision/utils/utils.h"
 #include "wav.h"
 
 class Vad:public fastdeploy::FastDeployModel{

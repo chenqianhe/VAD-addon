@@ -45,12 +45,6 @@ class FASTDEPLOY_DECL FastDeployModel {
   /** Model's valid timvx backends. This member defined all the timvx backends have successfully tested for the model
    */
   std::vector<Backend> valid_timvx_backends = {};
-  /** Model's valid ascend backends. This member defined all the cann backends have successfully tested for the model
-   */
-  std::vector<Backend> valid_ascend_backends = {};
-  /** Model's valid KunlunXin xpu backends. This member defined all the KunlunXin xpu backends have successfully tested for the model
-   */
-  std::vector<Backend> valid_kunlunxin_backends = {};
   /** Model's valid hardware backends. This member defined all the gpu backends have successfully tested for the model
    */
   std::vector<Backend> valid_rknpu_backends = {};
@@ -118,20 +112,6 @@ class FASTDEPLOY_DECL FastDeployModel {
     std::vector<FDTensor>().swap(reused_output_tensors_);
   }
 
-  virtual fastdeploy::Runtime* CloneRuntime() {
-    return runtime_->Clone();
-  }
-
-  virtual bool SetRuntime(fastdeploy::Runtime* clone_runtime) {
-    runtime_ = std::unique_ptr<Runtime>(clone_runtime);
-    return true;
-  }
-
-  virtual std::unique_ptr<FastDeployModel> Clone() {
-    FDERROR << ModelName() << " doesn't support Cone() now." << std::endl;
-    return nullptr;
-  }
-
  protected:
   virtual bool InitRuntime();
 
@@ -149,8 +129,6 @@ class FASTDEPLOY_DECL FastDeployModel {
   bool CreateIpuBackend();
   bool CreateRKNPUBackend();
   bool CreateTimVXBackend();
-  bool CreateKunlunXinBackend();
-  bool CreateASCENDBackend();
 
   std::shared_ptr<Runtime> runtime_;
   bool runtime_initialized_ = false;

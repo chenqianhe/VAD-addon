@@ -18,7 +18,7 @@
 #endif
 
 #ifndef ENABLE_PADDLE_FRONTEND
-#define ENABLE_PADDLE_FRONTEND
+/* #undef ENABLE_PADDLE_FRONTEND */
 #endif
 
 #ifndef ENABLE_ORT_BACKEND
@@ -46,7 +46,7 @@
 #endif
 
 #ifndef ENABLE_VISION
-#define ENABLE_VISION
+/* #undef ENABLE_VISION */
 #endif
 
 #ifndef ENABLE_FLYCV
@@ -54,7 +54,7 @@
 #endif
 
 #ifndef ENABLE_TEXT
-#define ENABLE_TEXT
+/* #undef ENABLE_TEXT */
 #endif
 
 #ifndef ENABLE_OPENCV_CUDA
@@ -68,5 +68,5 @@
 #endif
 
 #ifndef ENABLE_FDTENSOR_FUNC
-#define ENABLE_FDTENSOR_FUNC
+/* #undef ENABLE_FDTENSOR_FUNC */
 #endif

@@ -39,8 +39,6 @@ class FASTDEPLOY_DECL PicoDet : public PPDetBase {
                         Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
     valid_rknpu_backends = {Backend::RKNPU2};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -66,9 +64,6 @@ class FASTDEPLOY_DECL PPYOLOE : public PPDetBase {
     valid_cpu_backends = {Backend::OPENVINO, Backend::ORT,
                         Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_timvx_backends = {Backend::LITE};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -93,8 +88,6 @@ class FASTDEPLOY_DECL PPYOLO : public PPDetBase {
                 model_format) {
     valid_cpu_backends = {Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::PDINFER};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -112,8 +105,6 @@ class FASTDEPLOY_DECL YOLOv3 : public PPDetBase {
     valid_cpu_backends = {Backend::OPENVINO, Backend::ORT, Backend::PDINFER,
                         Backend::LITE};
     valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -131,8 +122,6 @@ class FASTDEPLOY_DECL PaddleYOLOX : public PPDetBase {
     valid_cpu_backends = {Backend::OPENVINO, Backend::ORT, Backend::PDINFER,
                         Backend::LITE};
     valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -149,7 +138,6 @@ class FASTDEPLOY_DECL FasterRCNN : public PPDetBase {
                 model_format) {
     valid_cpu_backends = {Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::PDINFER};
-    valid_kunlunxin_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -166,7 +154,6 @@ class FASTDEPLOY_DECL MaskRCNN : public PPDetBase {
                 model_format) {
     valid_cpu_backends = {Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::PDINFER};
-    valid_kunlunxin_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
@@ -183,80 +170,10 @@ class FASTDEPLOY_DECL SSD : public PPDetBase {
                 model_format) {
     valid_cpu_backends = {Backend::PDINFER, Backend::LITE};
     valid_gpu_backends = {Backend::PDINFER};
-    valid_kunlunxin_backends = {Backend::LITE};
-    valid_ascend_backends = {Backend::LITE};
     initialized = Initialize();
   }
 
   virtual std::string ModelName() const { return "PaddleDetection/SSD"; }
-};
-
-class FASTDEPLOY_DECL PaddleYOLOv5 : public PPDetBase {
- public:
-  PaddleYOLOv5(const std::string& model_file, const std::string& params_file,
-               const std::string& config_file,
-               const RuntimeOption& custom_option = RuntimeOption(),
-               const ModelFormat& model_format = ModelFormat::PADDLE)
-      : PPDetBase(model_file, params_file, config_file, custom_option,
-                model_format) {
-    valid_cpu_backends = {Backend::ORT, Backend::PDINFER};
-    valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    initialized = Initialize();
-  }
-
-  virtual std::string ModelName() const { return "PaddleDetection/YOLOv5"; }
-};
-
-class FASTDEPLOY_DECL PaddleYOLOv6 : public PPDetBase {
- public:
-  PaddleYOLOv6(const std::string& model_file, const std::string& params_file,
-               const std::string& config_file,
-               const RuntimeOption& custom_option = RuntimeOption(),
-               const ModelFormat& model_format = ModelFormat::PADDLE)
-      : PPDetBase(model_file, params_file, config_file, custom_option,
-                model_format) {
-    valid_cpu_backends = {Backend::OPENVINO, Backend::ORT, Backend::PDINFER};
-    valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    initialized = Initialize();
-  }
-
-  virtual std::string ModelName() const { return "PaddleDetection/YOLOv6"; }
-};
-
-class FASTDEPLOY_DECL PaddleYOLOv7 : public PPDetBase {
- public:
-  PaddleYOLOv7(const std::string& model_file, const std::string& params_file,
-               const std::string& config_file,
-               const RuntimeOption& custom_option = RuntimeOption(),
-               const ModelFormat& model_format = ModelFormat::PADDLE)
-      : PPDetBase(model_file, params_file, config_file, custom_option,
-                model_format) {
-    valid_cpu_backends = {Backend::ORT, Backend::PDINFER};
-    valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    initialized = Initialize();
-  }
-
-  virtual std::string ModelName() const { return "PaddleDetection/YOLOv7"; }
-};
-
-class FASTDEPLOY_DECL RTMDet : public PPDetBase {
- public:
-  RTMDet(const std::string& model_file, const std::string& params_file,
-         const std::string& config_file,
-         const RuntimeOption& custom_option = RuntimeOption(),
-         const ModelFormat& model_format = ModelFormat::PADDLE)
-      : PPDetBase(model_file, params_file, config_file, custom_option,
-                model_format) {
-    valid_cpu_backends = {Backend::OPENVINO, Backend::ORT, Backend::PDINFER};
-    valid_gpu_backends = {Backend::ORT, Backend::PDINFER, Backend::TRT};
-    valid_kunlunxin_backends = {Backend::LITE};
-    initialized = Initialize();
-  }
-
-  virtual std::string ModelName() const { return "PaddleDetection/RTMDet"; }
 };
 
 }  // namespace detection

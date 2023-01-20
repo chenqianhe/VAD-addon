@@ -90,10 +90,8 @@ class FASTDEPLOY_DECL SCRFD : public FastDeployModel {
   unsigned int num_anchors;
 
   /// This function will disable normalize and hwc2chw in preprocessing step.
-  void DisableNormalize();
+  void DisableNormalizeAndPermute();
 
-  /// This function will disable hwc2chw in preprocessing step.
-  void DisablePermute();
  private:
   bool Initialize();
 
@@ -123,10 +121,8 @@ class FASTDEPLOY_DECL SCRFD : public FastDeployModel {
 
   std::unordered_map<int, std::vector<SCRFDPoint>> center_points_;
 
-  // for recording the switch of normalize
-  bool disable_normalize_ = false;
-  // for recording the switch of hwc2chw
-  bool disable_permute_ = false;
+  // for recording the switch of normalize and hwc2chw
+  bool disable_normalize_and_permute_ = false;
 };
 }  // namespace facedet
 }  // namespace vision
