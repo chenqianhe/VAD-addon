@@ -17,8 +17,8 @@
 /* #undef FASTDEPLOY_LIB */
 #endif
 
-#ifndef ENABLE_PADDLE_FRONTEND
-/* #undef ENABLE_PADDLE_FRONTEND */
+#ifndef ENABLE_PADDLE2ONNX
+/* #undef ENABLE_PADDLE2ONNX */
 #endif
 
 #ifndef ENABLE_ORT_BACKEND
@@ -26,7 +26,7 @@
 #endif
 
 #ifndef ENABLE_PADDLE_BACKEND
-#define ENABLE_PADDLE_BACKEND
+/* #undef ENABLE_PADDLE_BACKEND */
 #endif
 
 #ifndef ENABLE_POROS_BACKEND
@@ -34,7 +34,7 @@
 #endif
 
 #ifndef ENABLE_OPENVINO_BACKEND
-#define ENABLE_OPENVINO_BACKEND
+/* #undef ENABLE_OPENVINO_BACKEND */
 #endif
 
 #ifndef WITH_GPU
@@ -46,7 +46,7 @@
 #endif
 
 #ifndef ENABLE_VISION
-#define ENABLE_VISION
+/* #undef ENABLE_VISION */
 #endif
 
 #ifndef ENABLE_FLYCV
@@ -54,19 +54,5 @@
 #endif
 
 #ifndef ENABLE_TEXT
-#define ENABLE_TEXT
-#endif
-
-#ifndef ENABLE_OPENCV_CUDA
-/* #undef ENABLE_OPENCV_CUDA */
-#endif
-
-#ifdef ENABLE_VISION
-#ifndef ENABLE_VISION_VISUALIZE
-#define ENABLE_VISION_VISUALIZE
-#endif
-#endif
-
-#ifndef ENABLE_FDTENSOR_FUNC
-#define ENABLE_FDTENSOR_FUNC
+/* #undef ENABLE_TEXT */
 #endif
