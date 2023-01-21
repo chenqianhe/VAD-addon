@@ -26,6 +26,7 @@ npm install
 <details>
 <summary>Clion configuration</summary>
 <img width="1425" alt="image" src="https://user-images.githubusercontent.com/54462604/213860521-5cf830ef-fa95-460f-8b0a-e44f95a56070.png">
+<img alt="image" src="https://user-images.githubusercontent.com/54462604/213860779-46da3900-88f2-408b-950b-5e920c4b744b.png">
 
 </details>
 
