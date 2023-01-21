@@ -3,8 +3,9 @@ const exec = require('child_process').exec;
 const chalk = require('chalk');
 const fs = require('fs');
 
+const LOG = (content) => console.log(chalk.gray('[LOG] ' + content))
 const INFO = (content) => console.info(chalk.green('[INFO] ' + content));
-const ERROR = (content) => console.info(chalk.red('[ERROR] ' + content));
+const ERROR = (content) => console.error(chalk.red('[ERROR] ' + content));
 const NOTICE = (content) => console.info(chalk.blue('[NOTICE] ' + content));
 
 const PLATFORM = process.platform;
@@ -30,8 +31,17 @@ function clean(cb) {
     }
 }
 
-const getCmakeParams = () => process.argv.length >= 2 ?
-    process.argv.slice(2).reduce((pre, cur) => `${pre} '${cur}'`, '') : '';
+const getCmakeParams = () => {
+    if (process.argv.length >= 2) {
+        if (['clean', 'build', 'check'].includes(process.argv[2])) {
+            return process.argv.length >= 3 ?
+                process.argv.slice(3).reduce((pre, cur) => `${pre} '${cur}'`, '') : '';
+        } else {
+            return process.argv.slice(2).reduce((pre, cur) => `${pre} '${cur}'`, '');
+        }
+    }
+    return '';
+}
 
 function build(cb) {
     const params = getCmakeParams()
@@ -40,8 +50,8 @@ function build(cb) {
     const cmd = `npx cmake-js compile${params}`;
     INFO(cmd);
     exec(cmd, function (err, stdout, stderr) {
-        if (stdout) console.log(stdout);
-        if (stderr) console.log(stderr);
+        if (stdout) LOG(stdout);
+        if (stderr) LOG(stderr);
         if (err) ERROR(stderr);
         cb(err);
     });
