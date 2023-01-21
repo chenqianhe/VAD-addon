@@ -58,6 +58,20 @@ npx gulp [options]
 > npx gulp -c xxx/cmake
 > ```
 
+### Run example in node env
+```bash
+node index.js
+```
+> Result likes
+> ```
+>[
+>  { start: '0.000000', end: '2.304000' },
+>  { start: '5.056000', end: '7.680000' },
+>  { start: '8.320001', end: '10.496000' }
+>]
+>```
+
+
 ## Reference
 
 - [FastDeploy](https://github.com/PaddlePaddle/FastDeploy/)
