@@ -2,10 +2,10 @@ English | [简体中文](README_CN.md)
 
 # VAD-addon
 
-This project provides an addon that can **perform VAD model reasoning in nodes and electric environments**, based on [cmake-js](https://github.com/cmake-js/cmake-js) and [Fastdeploy](https://github.com/PaddlePaddle/FastDeploy).
+This project provides an addon that can **perform VAD model reasoning in node and electron environments**, based on [cmake-js](https://github.com/cmake-js/cmake-js) and [Fastdeploy](https://github.com/PaddlePaddle/FastDeploy).
 [**Silero VAD**](https://github.com/snakers4/silero-vad) is a pre-trained enterprise-grade Voice Activity Detector. 
 
-Our project supports Windows AMD64(x86_64), macOS x86_64, macOS arm64, Linux AMD64(x86_64), Linux aarch64(arm64)
+Our project supports Windows AMD64(x86_64), macOS x86_64, macOS arm64, Linux AMD64(x86_64), Linux aarch64(arm64).
 
 ## Install
 
