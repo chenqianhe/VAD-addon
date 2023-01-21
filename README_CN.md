@@ -55,6 +55,20 @@ npx gulp [options]
 > ```bash
 > npx gulp -c xxx/cmake
 > ```
+
+### 运行 node 环境下示例
+```bash
+node index.js
+```
+> 结果类似
+> ```
+>[
+>  { start: '0.000000', end: '2.304000' },
+>  { start: '5.056000', end: '7.680000' },
+>  { start: '8.320001', end: '10.496000' }
+>]
+>```
+
 ## 参考
 
 - [FastDeploy](https://github.com/PaddlePaddle/FastDeploy/)
