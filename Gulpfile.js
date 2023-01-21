@@ -17,27 +17,34 @@ function clean(cb) {
     if (PLATFORM === 'darwin' || PLATFORM === 'linux') {
         cmd = 'rm -rf build';
     } else if (PLATFORM.startsWith('win')) {
-        cmd = 'rd /S build';
+        cmd = 'rd /S /Q build';
     }
     if (cmd) {
-        exec(cmd, function (err, stdout, stderr) {
-            if (stdout) console.log(stdout);
-            if (stderr) ERROR(stderr);
-            cb(err);
-        });
+        fs.access('./build', fs.constants.F_OK, (err) => {
+            if (!err) {
+                exec(cmd, function (err, stdout, stderr) {
+                    if (stdout) LOG(stdout);
+                    if (stderr) LOG(stderr);
+                    if (err) ERROR(stderr);
+                    cb(err);
+                });
+            }
+        })
     } else {
         ERROR('Your system is temporarily not supported.');
         cb(new ERROR('system is unsupported'));
     }
+    cb();
 }
 
 const getCmakeParams = () => {
+    const combineParams = (pre, cur) => PLATFORM.startsWith('win') ? `${pre} ${cur}` : `${pre} '${cur}'`;
     if (process.argv.length >= 2) {
         if (['clean', 'build', 'check'].includes(process.argv[2])) {
             return process.argv.length >= 3 ?
-                process.argv.slice(3).reduce((pre, cur) => `${pre} '${cur}'`, '') : '';
+                process.argv.slice(3).reduce(combineParams, '') : '';
         } else {
-            return process.argv.slice(2).reduce((pre, cur) => `${pre} '${cur}'`, '');
+            return process.argv.slice(2).reduce(combineParams, '');
         }
     }
     return '';
