@@ -25,8 +25,5 @@ jobs:
           npm install
           npx gulp
 
-      - name: link
-        run: export DYLD_LIBRARY_PATH=./build/Release
-
       - name: Run
         run: node index.js
