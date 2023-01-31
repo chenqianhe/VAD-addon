@@ -15,11 +15,6 @@ jobs:
       - name: Get CMake
         uses: symbitic/install-cmake@master
 
-      - name: Build
-        run: |
-          make
-          make stream
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
