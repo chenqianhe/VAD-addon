@@ -36,6 +36,15 @@ jobs:
           cp -r ./FastDeploy/build/compiled_fastdeploy_sdk ./compiled_fastdeploy_sdk
           rm -rf FastDeploy
           ls -l
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: compiled_fastdeploy_sdk-mac_x64
+          FOLDER: compiled_fastdeploy_sdk
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 #
 #      - name: Use Node.js ${{ matrix.node-version }}
 #        uses: actions/setup-node@v1
