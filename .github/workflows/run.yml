@@ -4,9 +4,9 @@ on: [push]
 jobs:
   macOS-latest:
     runs-on: macOS-latest
-  strategy:
-    matrix:
-      node-version: [ 18.x ]
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
 
     steps:
       - name: Clone
