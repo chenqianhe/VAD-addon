@@ -16,13 +16,15 @@ jobs:
         uses: symbitic/install-cmake@master
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
       - name: Build
-        run: npx gulp
+        run: |
+          npm install
+          npx gulp
 
       - name: Run
         run: node index.js
