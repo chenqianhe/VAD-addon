@@ -16,10 +16,10 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Clone FastDeploy
-        uses: sudosubin/git-clone-action
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
-          repository: 'PaddlePaddle/FastDeploy'
-          platform: 'github'
+          owner: 'PaddlePaddle'
+          repository: 'FastDeploy'
 
       - name: Build FastDeploy
         working-directory: ./FastDeploy
