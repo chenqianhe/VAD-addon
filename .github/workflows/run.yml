@@ -43,7 +43,7 @@ jobs:
           REPO: self
           BRANCH: compiled_fastdeploy_sdk-mac_x64
           FOLDER: compiled_fastdeploy_sdk
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
 #
 #      - name: Use Node.js ${{ matrix.node-version }}
