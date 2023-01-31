@@ -1,0 +1,30 @@
+name: Run
+on: [push]
+
+jobs:
+  macOS-latest:
+    runs-on: macOS-latest
+  strategy:
+    matrix:
+      node-version: [ 18.x ]
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v1
+
+      - name: Get CMake
+        uses: symbitic/install-cmake@master
+
+      - name: Build
+        run: |
+          make
+          make stream
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Run
+        run: npm run build
