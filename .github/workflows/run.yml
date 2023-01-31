@@ -21,5 +21,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Build
+        run: npx gulp
+
       - name: Run
-        run: npm run build
+        run: node index.js
