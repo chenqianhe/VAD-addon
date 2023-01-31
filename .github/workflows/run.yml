@@ -16,7 +16,7 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Clone FastDeploy
-        uses: sudosubin/git-clone-action@latest
+        uses: sudosubin/git-clone-action
         with:
           repository: 'PaddlePaddle/FastDeploy'
           platform: 'github'
