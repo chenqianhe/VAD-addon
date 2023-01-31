@@ -31,7 +31,8 @@ class FASTDEPLOY_DECL PaddleSegPreprocessor {
   /** \brief Process the input image and prepare input tensors for runtime
    *
    * \param[in] images The input image data list, all the elements are returned by cv::imread()
-   * \param[in] outputs The output tensors which will feed in runtime, include image
+   * \param[in] outputs The output tensors which will feed in runtime
+   * \param[in] imgs_info The original input images shape info map, key is "shape_info", value is vector<array<int, 2>> a{{height, width}} 
    * \return true if the preprocess successed, otherwise false
    */
   virtual bool Run(
@@ -49,8 +50,10 @@ class FASTDEPLOY_DECL PaddleSegPreprocessor {
     is_vertical_screen_ = value;
   }
 
-  // This function will disable normalize and hwc2chw in preprocessing step.
-  void DisableNormalizeAndPermute();
+  /// This function will disable normalize in preprocessing step.
+  void DisableNormalize();
+  /// This function will disable hwc2chw in preprocessing step.
+  void DisablePermute();
 
  private:
   virtual bool BuildPreprocessPipelineFromConfig();
@@ -61,10 +64,12 @@ class FASTDEPLOY_DECL PaddleSegPreprocessor {
    */
   bool is_vertical_screen_ = false;
 
-  // for recording the switch of normalize and hwc2chw
-  bool disable_normalize_and_permute_ = false;
+  // for recording the switch of hwc2chw
+  bool disable_permute_ = false;
+  // for recording the switch of normalize
+  bool disable_normalize_ = false;
 
-  bool is_contain_resize_op = false;
+  bool is_contain_resize_op_ = false;
 
   bool initialized_ = false;
 };

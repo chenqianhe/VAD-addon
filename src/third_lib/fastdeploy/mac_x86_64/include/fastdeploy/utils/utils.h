@@ -63,7 +63,7 @@ class FASTDEPLOY_DECL FDLogger {
   FDLogger& operator<<(std::ostream& (*os)(std::ostream&));
 
   ~FDLogger() {
-    if (!verbose_ && line_ != "") {
+    if (verbose_ && line_ != "") {
       std::cout << line_ << std::endl;
 #ifdef __ANDROID__
       __android_log_print(ANDROID_LOG_INFO, prefix_.c_str(), "%s",
@@ -203,8 +203,7 @@ FASTDEPLOY_DECL bool ReadBinaryFromFile(const std::string& file,
 FASTDEPLOY_DECL std::vector<int64_t>
 GetStride(const std::vector<int64_t>& dims);
 
-template <typename T, typename std::enable_if<std::is_integral<T>::value,
-                                              bool>::type = true>
+template <typename T>
 std::string Str(const std::vector<T>& shape) {
   std::ostringstream oss;
   oss << "[ " << shape[0];
