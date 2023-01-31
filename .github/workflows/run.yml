@@ -15,46 +15,46 @@ jobs:
       - name: Get CMake
         uses: lukka/get-cmake@latest
 
-      - name: Clone FastDeploy
-        uses: GuillaumeFalourd/clone-github-repo-action@v2
-        with:
-          owner: 'PaddlePaddle'
-          repository: 'FastDeploy'
-
-      - name: Build FastDeploy
-        working-directory: ./FastDeploy
-        run: |
-          mkdir build
-          cd build
-          cmake .. -DENABLE_ORT_BACKEND=ON -DCMAKE_INSTALL_PREFIX=${PWD}/compiled_fastdeploy_sdk
-          make -j12
-          make install
-          ls -l
-
-      - name: Copy
-        run: |
-          cp -r ./FastDeploy/build/compiled_fastdeploy_sdk ./compiled_fastdeploy_sdk
-          rm -rf FastDeploy
-          ls -l
-
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: compiled_fastdeploy_sdk-mac_x64
-          FOLDER: compiled_fastdeploy_sdk
-          GITHUB_TOKEN: ${{ secrets.SELF_GITHUB_TOKEN }}
-
-#
-#      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v1
+#      - name: Clone FastDeploy
+#        uses: GuillaumeFalourd/clone-github-repo-action@v2
 #        with:
-#          node-version: ${{ matrix.node-version }}
+#          owner: 'PaddlePaddle'
+#          repository: 'FastDeploy'
 #
-#      - name: Build
+#      - name: Build FastDeploy
+#        working-directory: ./FastDeploy
 #        run: |
-#          npm install
-#          npx gulp
+#          mkdir build
+#          cd build
+#          cmake .. -DENABLE_ORT_BACKEND=ON -DCMAKE_INSTALL_PREFIX=${PWD}/compiled_fastdeploy_sdk
+#          make -j12
+#          make install
+#          ls -l
 #
-#      - name: Run
-#        run: node index.js
+#      - name: Copy
+#        run: |
+#          cp -r ./FastDeploy/build/compiled_fastdeploy_sdk ./compiled_fastdeploy_sdk
+#          rm -rf FastDeploy
+#          ls -l
+#
+#      - name: Deploy
+#        uses: s0/git-publish-subdir-action@develop
+#        env:
+#          REPO: self
+#          BRANCH: compiled_fastdeploy_sdk-mac_x64
+#          FOLDER: compiled_fastdeploy_sdk
+#          GITHUB_TOKEN: ${{ secrets.SELF_GITHUB_TOKEN }}
+
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Build
+        run: |
+          npm install
+          npx gulp
+
+      - name: Run
+        run: node index.js
