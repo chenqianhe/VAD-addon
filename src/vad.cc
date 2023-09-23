@@ -126,8 +126,15 @@ bool Vad::Predict() {
                 "set by the program.");
     }
     for (int64_t j = 0; j < wavReader_.num_samples(); j += window_size_samples_) {
+        int64_t end = j + window_size_samples_;
+        if (end > wavReader_.num_samples()) {
+            end = wavReader_.num_samples();
+        }
+        if (j + window_size_samples_ > wavReader_.num_samples()) {
+            break;
+        }
         std::vector<float> r{&inputWav_[0] + j,
-                             &inputWav_[0] + j + window_size_samples_};
+                             &inputWav_[0] + end};
         Preprocess(r);
         if (!Infer(inputTensors_, &outputTensors_)) {
             fastdeploy::FDERROR << "Failed to inference while using model:"
